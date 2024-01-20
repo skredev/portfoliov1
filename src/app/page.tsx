@@ -2,7 +2,7 @@ import { ModeToggle } from '@/components/ui/toggle-mode'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Home() {
+export default async function Dashboard() {
   return (
     <main>
       <header className='sm:flex sm:justify-between py-1 px-4 border-b'>
