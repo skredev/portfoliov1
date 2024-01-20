@@ -1,8 +1,18 @@
+"use client";
+
 import { ModeToggle } from '@/components/ui/toggle-mode'
 import Image from 'next/image'
 import Link from 'next/link'
+import { signOut } from 'next-auth/react'
+import { toast } from "sonner"
 
 export default async function Dashboard() {
+
+  const handleLogout = async () => {
+    signOut();
+    toast.success("Successfully logged out");
+  }
+  
   return (
     <main>
       <header className='sm:flex sm:justify-between py-1 px-4 border-b'>
@@ -14,7 +24,12 @@ export default async function Dashboard() {
               </h1>
             </Link>
           </div>
-          <ModeToggle />
+          <div className='flex items-center'>
+              <h1 onClick={() => handleLogout()} className='ml-4 lg:ml-0 px-5 text-l hover:underline cursor-pointer'>
+                Logout
+              </h1>
+            <ModeToggle />
+          </div>
         </div>
       </header>
     </main>

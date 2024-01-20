@@ -57,6 +57,7 @@ export default function Login() {
     const response = await signIn("credentials", { username: values.username, password: values.password, redirect: false, callbackUrl: "/" })
     if(response?.ok){
         router.push('/', { scroll: false });
+        toast.success("Successfully logged in")
     }else{
         toast.error("Login failed", {
             description: "Surely only the wrong credentials..."
