@@ -79,37 +79,34 @@ export default function Login() {
           <ModeToggle />
         </div>
       </header>
-
-      <section className=''>
-        <div className='flex flex-col items-center justify-between p-24'>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(handleSubmit)} className='flex flex-col gap-4'>
-                    <FormField control={form.control} name="username" render={({field}) => {
-                    return <FormItem>
-                        <FormLabel>Username</FormLabel>
-                        <FormControl>
-                            <Input placeholder="Username" type="text" {...field} />
-                        </FormControl>
-                        <FormDescription>
-                            This is your public display name.
-                        </FormDescription>
-                        <FormMessage />
-                    </FormItem>
-                    }} />
-                    <FormField control={form.control} name="password" render={({field}) => {
-                    return <FormItem>
-                        <FormLabel>Password</FormLabel>
-                        <FormControl>
-                        <Input placeholder="Password" type="password" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    }} />
-                    <Button type="submit">Login</Button>
-                </form>
-            </Form>
-        </div>
-      </section>
+      <div className='flex flex-col items-center justify-between p-24'>
+          <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleSubmit)} className='flex flex-col gap-4'>
+                  <FormField control={form.control} name="username" render={({field}) => {
+                  return <FormItem>
+                      <FormLabel>Username</FormLabel>
+                      <FormControl>
+                          <Input placeholder="Username" type="text" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                          This is your public display name.
+                      </FormDescription>
+                      <FormMessage />
+                  </FormItem>
+                  }} />
+                  <FormField control={form.control} name="password" render={({field}) => {
+                  return <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                      <Input placeholder="Password" type="password" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                  </FormItem>
+                  }} />
+                  <Button type="submit">Login</Button>
+              </form>
+          </Form>
+      </div>
     </main>
   )
 }
