@@ -5,7 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { signIn } from "next-auth/react"
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react';
 
 import * as z from 'zod';
 import { useForm } from "react-hook-form"
@@ -52,6 +53,7 @@ export default function Login() {
   });
 
   const router = useRouter();
+  const { data: session, status } = useSession()
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     const response = await signIn("credentials", { username: values.username, password: values.password, redirect: false, callbackUrl: "/" })
@@ -64,6 +66,10 @@ export default function Login() {
             description: "Surely only the wrong credentials..."
         })
     }
+  }
+
+  if(status === "authenticated"){
+    setTimeout(() => {router.push("/dashboard")})
   }
 
   return (
