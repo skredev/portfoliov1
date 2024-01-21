@@ -56,7 +56,7 @@ export default function Login() {
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     const response = await signIn("credentials", { username: values.username, password: values.password, redirect: false, callbackUrl: "/" })
     if(response?.ok){
-        router.push('/', { scroll: true });
+        router.push('/dashboard', { scroll: false });
         toast.success("Successfully logged in")
     }else{
         toast.error("Login failed", {
