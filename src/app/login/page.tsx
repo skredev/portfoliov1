@@ -56,7 +56,8 @@ export default function Login() {
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     const response = await signIn("credentials", { username: values.username, password: values.password, redirect: false, callbackUrl: "/" })
     if(response?.ok){
-        const push = await router.push('/dashboard', { scroll: false });
+        router.refresh();
+        const push = await setTimeout(() => {router.push('/dashboard', { scroll: false })}, 250);
         toast.success("Successfully logged in")
     }else{
         toast.error("Login failed", {
