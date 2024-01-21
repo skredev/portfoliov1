@@ -8,7 +8,7 @@ import { toast } from "sonner"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useSession } from 'next-auth/react';
-import { use } from 'react';
+import { ArrowDownRightFromCircle } from 'lucide-react';
 
 import {
   DropdownMenu,
@@ -34,13 +34,12 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-import {
-  LogOut,
-  User
-} from "lucide-react"
+import { LogOut, User } from "lucide-react"
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
   const { data } = useSession();
+  const router = useRouter();
   
   const handleLogout = async () => {
     signOut();
@@ -63,6 +62,7 @@ export default function Dashboard() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Avatar>
+                    <AvatarImage src={data?.user.image} />
                     <AvatarFallback>{data?.user.name.substr(0,2).toUpperCase()}</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
@@ -70,7 +70,7 @@ export default function Dashboard() {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem className='hover: cursor-pointer'>
+                    <DropdownMenuItem onClick={() => {router.push('/dashboard/user')}} className='hover: cursor-pointer'>
                       <User className="mr-2 h-4 w-4" />
                       <span>Profile</span>
                     </DropdownMenuItem>
@@ -92,50 +92,120 @@ export default function Dashboard() {
         <div className='grid grid-cols-3 gap-8'>
           <Card>
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>Nextcloud</CardTitle>
+              <CardDescription>a safe place for all your data</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <Image src={''} alt={''}></Image>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <Link className="w-full" href="https://c.skre.dev">
+                <Button className="w-full" variant="outline">
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Nextcloud
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
+
           <Card>
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>Excalidraw</CardTitle>
+              <CardDescription>virtual collaborative whiteboard tool</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <Image src={''} alt={''}></Image>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <Link className="w-full" href="https://d.skre.dev">
+                <Button className="w-full" variant="outline">
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Excalidraw
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
+
           <Card>
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>Zipline</CardTitle>
+              <CardDescription>ShareX / File upload server</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <Image src={''} alt={''}></Image>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <Link className="w-full" href="https://s.skre.dev">
+                <Button className="w-full" variant="outline">
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Zipline
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
+
           <Card>
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>IT-Tools</CardTitle>
+              <CardDescription>Handy tools for developers</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <Image src={''} alt={''}></Image>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <Link className="w-full" href="https://t.skre.dev">
+                <Button className="w-full" variant="outline">
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open IT-Tools
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>NGINXProxyManager</CardTitle>
+              <CardDescription>Managing Nginx proxy hosts with a powerful interface</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Image src={''} alt={''}></Image>
+            </CardContent>
+            <CardFooter>
+              <Link className="w-full" href="http://161.97.125.45:81/">
+                <Button className="w-full" variant="outline">
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open NGINXProxyManager
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Portainer</CardTitle>
+              <CardDescription>Container management software</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Image src={''} alt={''}></Image>
+            </CardContent>
+            <CardFooter>
+              <Link className="w-full" href="https://p.skre.dev">
+                <Button className="w-full" variant="outline">
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Portainer
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>PGAdmin</CardTitle>
+              <CardDescription>PostgreSQL administration</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Image src={''} alt={''}></Image>
+            </CardContent>
+            <CardFooter>
+              <Link className="w-full" href="http://161.97.125.45:5051/">
+                <Button className="w-full" variant="outline">
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open PGAdmin
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         </div>
