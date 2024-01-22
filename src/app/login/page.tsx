@@ -56,10 +56,8 @@ export default function Login() {
   const { data: session, status } = useSession()
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
-    const response = await signIn("credentials", { username: values.username, password: values.password, redirect: false, callbackUrl: "/" })
+    const response = await signIn("credentials", { username: values.username, password: values.password, redirect: true, callbackUrl: "/" })
     if(response?.ok){
-        router.refresh();
-        const push = await setTimeout(() => {router.push('/dashboard', { scroll: false })}, 250);
         toast.success("Successfully logged in")
     }else{
         toast.error("Login failed", {
@@ -69,7 +67,7 @@ export default function Login() {
   }
 
   if(status === "authenticated"){
-    setTimeout(() => {router.push("/dashboard")})
+    router.push("/dashboard")
   }
 
   return (

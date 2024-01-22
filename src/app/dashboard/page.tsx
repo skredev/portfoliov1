@@ -87,9 +87,9 @@ export default function Dashboard() {
           </div>
         </div>
       </header>
-      <div className='px-48 py-12'>
+      <div className='py-12 px-48 max-[1280px]:px-24 max-[768px]:px-12'>
         <h1 className='text-3xl font-medium py-12'>Welcome, {data?.user.name}!</h1>
-        <div className='grid grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3'>
           <Card>
             <CardHeader>
               <CardTitle>Nextcloud</CardTitle>
@@ -158,7 +158,7 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
 
-          <Card>
+          <Card className='break-all'>
             <CardHeader>
               <CardTitle>NGINXProxyManager</CardTitle>
               <CardDescription>Managing Nginx proxy hosts with a powerful interface</CardDescription>
@@ -169,7 +169,7 @@ export default function Dashboard() {
             <CardFooter>
               <Link className="w-full" href="http://161.97.125.45:81/">
                 <Button className="w-full" variant="outline">
-                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open NGINXProxyManager
+                  <ArrowDownRightFromCircle className="mr-2 h-4 w-4 break-all" /> Open NGINXProxyManager
                 </Button>
               </Link>
             </CardFooter>
