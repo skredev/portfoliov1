@@ -8,6 +8,7 @@ import { ModeToggle } from "@/components/ui/toggle-mode"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import { buttonVariants } from "@/components/ui/button";
+import { Navbar } from "@/components/navbar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -38,26 +39,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <nav>
-            <div className='relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full'>
-              <div className='flex items-center'>
-                <Link href="/" className='ml-4 lg:ml-0'>
-                  <h1 className='text-xl font-bold'>
-                    skre/dashboard
-                  </h1>
-                </Link>
-              </div>
-              <div className='flex items-center gap-3'>
-                <Link
-                  href="https://github.com/sprechblase"
-                  className={buttonVariants({ variant: "ghost", size: "icon" })}
-                >
-                  <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
-                </Link>
-                <ModeToggle />
-              </div>
-            </div>
-          </nav>
+          <Navbar />
           <main>
             {children}
           </main>

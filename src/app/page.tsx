@@ -1,133 +1,95 @@
+"use client";
+
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowDownRightFromCircle } from "lucide-react";
+import { ArrowDownRightFromCircle, DoorOpen, Github, Mails, SendHorizontal, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { firestore as db } from "@/lib/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Home() {
+  const [projects, setProjects] = useState<any>([])
+
+  const getProjects = async () => {
+    const col = collection(db, "public_projects");
+    const snapshot = await getDocs(col);
+    setProjects(snapshot.docs.map(doc => {
+      return {
+        id: doc.id,
+        ...doc.data()
+      }
+    }));
+  }
+  
+  useEffect(() => {
+    getProjects()
+  }, []) 
+
   return (
+  <main>
     <div className='py-12 px-48 max-[1280px]:px-24 max-[768px]:px-12'>
-    <h1 className='text-3xl font-medium py-12'>Welcome!</h1>
-    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3'>
+      <h1 className='text-3xl font-medium py-12 text-zinc-50'><DoorOpen />Public Projects</h1>
+      <div className='grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3'>
+        {
+          projects.map((project : any) => (
+            <div key={project.id}>
+              <Card>
+                <div className="flex justify-end">
+                  <Badge variant={project.status} className="m-3">{project.status}</Badge>
+                </div>
+                <CardHeader className="pt-0">
+                  <CardTitle>{project.name}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <Link className="w-full" href={project.link}>
+                    <Button className="w-full" variant="outline">
+                      <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open {project.name}
+                    </Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div className='pb-36 px-48 max-[1280px]:px-24 max-[768px]:px-12'>
+      <h1 className='text-3xl font-medium py-12 text-zinc-50'><Mails />Contact Me</h1>
       <Card>
-        <CardHeader>
-          <CardTitle>Nextcloud</CardTitle>
-          <CardDescription>a safe place for all your data</CardDescription>
-        </CardHeader>
+        <CardHeader />
         <CardContent>
-          <Image src={''} alt={''}></Image>
+          <div className='grid grid-rows-3 md:grid-rows-2 grid-flow-col gap-4'>
+            <div className="flex items-center">
+              <Link className="w-full" href="mailto:hi@skre.dev">
+                <Button className="w-full" variant="outline">
+                  <SendHorizontal className="mr-2 h-4 w-4" /> Mail hi@skre.dev
+                </Button>
+              </Link>
+            </div>
+            <div className="flex items-center">
+              <Link className="w-full" href="https://github.com/sprechblase">
+                <Button className="w-full" variant="outline">
+                  <Github className="mr-2 h-4 w-4" /> GitHub
+                </Button>
+              </Link>
+            </div>
+            <div className="flex items-center">
+              <Link className="w-full" href="https://x.com/skredev">
+                <Button className="w-full" variant="outline">
+                  <Twitter className="mr-2 h-4 w-4" /> Twitter (X)
+                </Button>
+              </Link>
+            </div>
+          </div>
         </CardContent>
-        <CardFooter>
-          <Link className="w-full" href="https://c.skre.dev">
-            <Button className="w-full" variant="outline">
-              <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Nextcloud
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Excalidraw</CardTitle>
-          <CardDescription>virtual collaborative whiteboard tool</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Image src={''} alt={''}></Image>
-        </CardContent>
-        <CardFooter>
-          <Link className="w-full" href="https://d.skre.dev">
-            <Button className="w-full" variant="outline">
-              <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Excalidraw
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Zipline</CardTitle>
-          <CardDescription>ShareX / File upload server</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Image src={''} alt={''}></Image>
-        </CardContent>
-        <CardFooter>
-          <Link className="w-full" href="https://s.skre.dev">
-            <Button className="w-full" variant="outline">
-              <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Zipline
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>IT-Tools</CardTitle>
-          <CardDescription>Handy tools for developers</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Image src={''} alt={''}></Image>
-        </CardContent>
-        <CardFooter>
-          <Link className="w-full" href="https://t.skre.dev">
-            <Button className="w-full" variant="outline">
-              <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open IT-Tools
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
-
-      <Card className='break-all'>
-        <CardHeader>
-          <CardTitle>NGINXProxyManager</CardTitle>
-          <CardDescription>Managing Nginx proxy hosts with a powerful interface</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Image src={''} alt={''}></Image>
-        </CardContent>
-        <CardFooter>
-          <Link className="w-full" href="http://161.97.125.45:81/">
-            <Button className="w-full" variant="outline">
-              <ArrowDownRightFromCircle className="mr-2 h-4 w-4 break-all" /> Open NGINXProxyManager
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Portainer</CardTitle>
-          <CardDescription>Container management software</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Image src={''} alt={''}></Image>
-        </CardContent>
-        <CardFooter>
-          <Link className="w-full" href="https://p.skre.dev">
-            <Button className="w-full" variant="outline">
-              <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open Portainer
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>PGAdmin</CardTitle>
-          <CardDescription>PostgreSQL administration</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Image src={''} alt={''}></Image>
-        </CardContent>
-        <CardFooter>
-          <Link className="w-full" href="http://161.97.125.45:5051/">
-            <Button className="w-full" variant="outline">
-              <ArrowDownRightFromCircle className="mr-2 h-4 w-4" /> Open PGAdmin
-            </Button>
-          </Link>
-        </CardFooter>
+        <CardFooter />
       </Card>
     </div>
-  </div>
+  </main>
   );
 }
