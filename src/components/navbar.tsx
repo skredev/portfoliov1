@@ -93,12 +93,6 @@ export function Navbar() {
                         </Link>
                     </div>
                     <div className='flex items-center gap-3'>
-                        <Link
-                        href="https://github.com/sprechblase"
-                        className={buttonVariants({ variant: "ghost", size: "icon" })}
-                        >
-                        <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
-                        </Link>
                         <ModeToggle />
                         {
                             isUserValid ? (
