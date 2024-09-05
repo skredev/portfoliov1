@@ -5,12 +5,13 @@ import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
-import { LogOut } from "lucide-react";
+import { LogOut, Settings } from "lucide-react";
 import { ModeToggle } from "./ui/toggle-mode";
 import { User } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { version } from '@/../package.json';
 
 export function Navbar() {
     const [isUserValid, setIsUserValid] = useState(false);
@@ -58,6 +59,10 @@ export function Navbar() {
                                     <User className="mr-2 h-4 w-4" />
                                     <span>Profile</span>
                                     </DropdownMenuItem>
+                                    <DropdownMenuItem className='hover: cursor-pointer' disabled>
+                                    <Settings className="mr-2 h-4 w-4" />
+                                    <span>Settings</span>
+                                    </DropdownMenuItem>
                                 </DropdownMenuGroup>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem onClick={() => 
@@ -69,6 +74,15 @@ export function Navbar() {
                                     } className='hover: cursor-pointer'>
                                     <LogOut className="mr-2 h-4 w-4" />
                                     <span>Log out</span>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className='pb-0 pt-2 hover: cursor-pointer' disabled>
+                                <span className="text-xs whitespace-break-spaces">{auth.currentUser?.uid}</span>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className='pt-0 pb-0 hover: cursor-pointer' disabled>
+                                <span className="text-xs whitespace-break-spaces">{auth.currentUser?.metadata.lastSignInTime}</span>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className='pt-0 hover: cursor-pointer' disabled>
+                                <span className="text-xs whitespace-break-spaces">v {process.env.version}</span>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

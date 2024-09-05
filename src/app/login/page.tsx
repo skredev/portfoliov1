@@ -96,6 +96,7 @@ export default function Login() {
               }} />
               <Button type="submit">Login</Button>
           </form>
+          <span className="text-xs pt-2 text-muted-foreground">v {process.env.version}</span>
       </Form>
     </div>
   )
