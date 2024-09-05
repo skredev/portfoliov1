@@ -15,12 +15,12 @@ export default function Home() {
   const [projects, setProjects] = useState<any>([])
 
   const getProjects = async () => {
-    const col = collection(db, "public_projects");
-    const snapshot = await getDocs(col);
+    const col = collection(db, "public_projects"); // accessing public projects collection
+    const snapshot = await getDocs(col); // making a snapshot of the data
     setProjects(snapshot.docs.map(doc => {
       return {
         id: doc.id,
-        ...doc.data()
+        ...doc.data() // saving the data
       }
     }));
   }

@@ -56,6 +56,7 @@ export default function Login() {
     }
   });
 
+  // Login Function
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     signInWithEmailAndPassword(auth, values.email, values.password)
     .then((userCredential) => {
