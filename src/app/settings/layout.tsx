@@ -12,6 +12,7 @@ export default function SettingsLayout({
   children: React.ReactNode;
 }) {
 
+  const router = useRouter();
   const [isUserValid, setIsUserValid] = useState(false);
 
   const sidebarNavItems = [
@@ -28,7 +29,7 @@ export default function SettingsLayout({
         if (user) {
           setIsUserValid(true);
         } else {
-          useRouter().push("/login");
+          router.push("/login");
         }
       });
     };
