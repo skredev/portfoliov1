@@ -1,7 +1,7 @@
 "use client"
 
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import * as z from 'zod';
 import { useForm } from "react-hook-form"
@@ -70,7 +70,7 @@ export function CreateProject(){
     };
 
     return (
-        <Card className="w-[400px]">
+        <Card>
             <CardHeader>
                 <CardTitle>Create project</CardTitle>
                 <CardDescription>Display your project in one-click.</CardDescription>
