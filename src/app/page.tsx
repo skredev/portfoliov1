@@ -80,7 +80,7 @@ export default function Home() {
           <div className='grid grid-rows-3 md:grid-rows-2 grid-flow-col gap-4'>
             {
               contacts.map((contact: any) => (
-                <div className="flex items-center">
+                <div key={contact.id} className="flex items-center">
                   <Link className="w-full" href={contact.link}>
                     <Button className="w-full" variant="outline">
                       <Icon name={contact.icon} className="mr-2 h-4 w-4" /> {contact.name}

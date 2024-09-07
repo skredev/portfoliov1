@@ -2,7 +2,7 @@
 
 import { Separator } from "@/components/ui/separator";
 import { auth } from "@/lib/firebase";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SidebarNav } from "./components/sidebar-nav";
 
@@ -12,7 +12,6 @@ export default function SettingsLayout({
   children: React.ReactNode;
 }) {
 
-  const router = useRouter();
   const [isUserValid, setIsUserValid] = useState(false);
 
   const sidebarNavItems = [
@@ -29,7 +28,7 @@ export default function SettingsLayout({
         if (user) {
           setIsUserValid(true);
         } else {
-          router.push("/login");
+          useRouter().push("/login");
         }
       });
     };

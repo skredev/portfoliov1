@@ -1,7 +1,7 @@
 "use client";
 
 import { auth } from "@/lib/firebase";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function DashboardLayout({
@@ -10,7 +10,6 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
 
-  const router = useRouter();
   const [isUserValid, setIsUserValid] = useState(false);
 
 
@@ -20,7 +19,7 @@ export default function DashboardLayout({
         if (user) {
           setIsUserValid(true);
         } else {
-          router.push("/login");
+          useRouter().push("/login");
         }
       });
     };
