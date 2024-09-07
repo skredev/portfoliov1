@@ -2,20 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { string, z } from "zod"
-import { toast } from "@/hooks/use-toast"
+import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { auth } from "@/lib/firebase";
+import { updateEmail } from "firebase/auth";
+import { toast } from "sonner"
+import { ReauthComponent } from "@/components/reauth-dialog"
+import { useState } from "react"
 
 const accountFormSchema = z.object({
   email: z
@@ -27,6 +22,9 @@ const accountFormSchema = z.object({
 type AccountFormValues = z.infer<typeof accountFormSchema>
 
 export function AccountForm() {
+
+  const [isReauthOpen, setIsReauthOpen] = useState(false);
+
   let defaultValues: Partial<AccountFormValues> = {
     email: auth.currentUser?.email as any
   }
@@ -37,18 +35,24 @@ export function AccountForm() {
   })
 
   function onSubmit(data: AccountFormValues) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    })
+    updateEmail(auth.currentUser as any, data['email']).then(() => {
+      toast.success("Successfully changed email", {
+        description: "New: " + JSON.stringify(data, null, 2)
+      })
+      console.log("success")
+    }).catch((error) => {
+      toast.error("Please reauthenticate")
+      setIsReauthOpen(true);
+    });
   }
 
   return (
     <Form {...form}>
+      <ReauthComponent
+        isOpen={isReauthOpen}
+        setIsOpen={setIsReauthOpen}
+      />
+        
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -66,7 +70,7 @@ export function AccountForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" disabled>Update account</Button>
+        <Button type="submit">Update account</Button>
       </form>
     </Form>
   )
