@@ -5,7 +5,7 @@ import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
-import { LogOut, Settings } from "lucide-react";
+import { ImageUp, LogOut, Settings } from "lucide-react";
 import { ModeToggle } from "./ui/toggle-mode";
 import { User } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
@@ -61,6 +61,10 @@ export function Navbar() {
                                         <DropdownMenuItem onClick={() => {router.push("/dashboard")}} className='hover: cursor-pointer'>
                                         <User className="mr-2 h-4 w-4" />
                                         <span>Profile</span>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => {window.location.assign('https://up.skre.dev/')}} className='hover: cursor-pointer'>
+                                        <ImageUp className="mr-2 h-4 w-4" />
+                                        <span>Zipline</span>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem onClick={() => {router.push("/settings")}} className='hover: cursor-pointer'>
                                         <Settings className="mr-2 h-4 w-4" />
