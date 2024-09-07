@@ -10,9 +10,11 @@ import { useEffect, useState } from "react";
 import { firestore as db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { Skeleton } from "@/components/ui/skeleton";
+import Icon from "@/components/icon"
 
 export default function Home() {
   const [projects, setProjects] = useState<any>([])
+  const [contacts, setContacts] = useState<any>([])
 
   const getProjects = async () => {
     const col = collection(db, "public_projects"); // accessing public projects collection
@@ -24,9 +26,21 @@ export default function Home() {
       }
     }));
   }
+
+  const getContacts = async () => {
+    const col = collection(db, "contact"); // accessing contact collection
+    const snapshot = await getDocs(col); // making a snapshot of the data
+    setContacts(snapshot.docs.map(doc => {
+      return {
+        id: doc.id,
+        ...doc.data() // saving the data
+      }
+    }));
+  }
   
   useEffect(() => {
     getProjects()
+    getContacts()
   }, []) 
 
   return (
@@ -64,27 +78,17 @@ export default function Home() {
         <CardHeader />
         <CardContent>
           <div className='grid grid-rows-3 md:grid-rows-2 grid-flow-col gap-4'>
-            <div className="flex items-center">
-              <Link className="w-full" href="mailto:hi@skre.dev">
-                <Button className="w-full" variant="outline">
-                  <SendHorizontal className="mr-2 h-4 w-4" /> Mail hi@skre.dev
-                </Button>
-              </Link>
-            </div>
-            <div className="flex items-center">
-              <Link className="w-full" href="https://github.com/sprechblase">
-                <Button className="w-full" variant="outline">
-                  <Github className="mr-2 h-4 w-4" /> GitHub
-                </Button>
-              </Link>
-            </div>
-            <div className="flex items-center">
-              <Link className="w-full" href="https://x.com/skredev">
-                <Button className="w-full" variant="outline">
-                  <Twitter className="mr-2 h-4 w-4" /> Twitter (X)
-                </Button>
-              </Link>
-            </div>
+            {
+              contacts.map((contact: any) => (
+                <div className="flex items-center">
+                  <Link className="w-full" href={contact.link}>
+                    <Button className="w-full" variant="outline">
+                      <Icon name={contact.icon} className="mr-2 h-4 w-4" /> {contact.name}
+                    </Button>
+                  </Link>
+                </div>
+              ))
+            }
           </div>
         </CardContent>
         <CardFooter />
