@@ -5,6 +5,8 @@ import { Hand } from "lucide-react";
 import { ProjectsTable } from "./components/projects/projects-table";
 import { CreateProject } from "./components/projects/create-project";
 import { Information } from "./components/info";
+import { ContactTable } from "./components/contact/contact-table";
+import { CreateContact } from "./components/contact/create-contact";
  
 export default function Dashboard() {
   return (
@@ -14,9 +16,11 @@ export default function Dashboard() {
           <div className="col-span-2 grid items-start gap-6 lg:col-span-1">
             <Information />
             <CreateProject />
+            <CreateContact />
           </div>
           <div className="col-span-2 grid items-start gap-6 pt-6 md:pt-0">
             <ProjectsTable />
+            <ContactTable />
           </div>
         </div>
     </div>
