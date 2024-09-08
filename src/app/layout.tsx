@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata} from "next";
 import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
 import "./globals.css"
-import Link from "next/link";
-import { GithubIcon } from "lucide-react";
-import { ModeToggle } from "@/components/ui/toggle-mode"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
-import { buttonVariants } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
 
 const fontSans = FontSans({

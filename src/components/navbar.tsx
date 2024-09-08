@@ -11,7 +11,6 @@ import { User } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { version } from '@/../package.json';
 
 export function Navbar() {
     const [isUserValid, setIsUserValid] = useState(false);

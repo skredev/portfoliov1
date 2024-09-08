@@ -3,13 +3,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowDownRightFromCircle, DoorOpen, Github, Mails, SendHorizontal, Twitter } from "lucide-react";
-import Image from "next/image";
+import { ArrowDownRightFromCircle, DoorOpen, Mails} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { firestore as db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { Skeleton } from "@/components/ui/skeleton";
 import Icon from "@/components/icon"
 
 export default function Home() {

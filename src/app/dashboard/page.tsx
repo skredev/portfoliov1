@@ -15,7 +15,7 @@ export default function Dashboard() {
             <Information />
             <CreateProject />
           </div>
-          <div className="col-span-2 grid items-start gap-6">
+          <div className="col-span-2 grid items-start gap-6 pt-6 md:pt-0">
             <ProjectsTable />
           </div>
         </div>
