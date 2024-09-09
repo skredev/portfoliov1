@@ -36,7 +36,7 @@ export function Navbar() {
                 <div className='flex items-center'>
                     <Link href="/" className="flex items-center gap-2.5">
                         <img className="w-10 h-10" src="/favicon.ico"></img>
-                        <h2 className="text-xl font-bold">skre/dashboard</h2>
+                        <h2 className="text-xl font-bold">skre/dev</h2>
                     </Link>
                 </div>
                 <div className='flex items-center gap-3'>

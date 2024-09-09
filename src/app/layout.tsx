@@ -12,8 +12,7 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: 'skre/dashboard',
-  description: 'In times of change',
+  title: 'skre/dev'
 };
 
 export default function RootLayout({
