@@ -13,7 +13,7 @@ export default function SettingsAccountPage() {
         </p>
       </div>
       <Separator />
-      <Tabs defaultValue="email" className="w-[400px]">
+      <Tabs defaultValue="email">
         <TabsList className="mb-5">
           <TabsTrigger value="email">Change E-Mail</TabsTrigger>
           <TabsTrigger value="password">Change Password</TabsTrigger>
