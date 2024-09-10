@@ -21,7 +21,7 @@ const accountFormSchema = z.object({
 
 type AccountFormValues = z.infer<typeof accountFormSchema>
 
-export function AccountForm() {
+export function EmailForm() {
 
   const [isReauthOpen, setIsReauthOpen] = useState(false);
 
@@ -39,7 +39,6 @@ export function AccountForm() {
       toast.success("Successfully changed email", {
         description: "New: " + JSON.stringify(data, null, 2)
       })
-      console.log("success")
     }).catch((error) => {
       toast.error("Please reauthenticate")
       setIsReauthOpen(true);
@@ -70,7 +69,7 @@ export function AccountForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Update account</Button>
+        <Button type="submit">Update email</Button>
       </form>
     </Form>
   )
