@@ -10,15 +10,15 @@ import { CreateContact } from "./components/contact/create-contact";
  
 export default function Dashboard() {
   return (
-    <div className='py-12 px-48 max-[1280px]:px-24 max-[768px]:px-12'>
+    <div className='py-12 px-12 lg:px-24 xl:px-48'>
         <h1 className='text-3xl font-medium py-12 text-zinc-50'><Hand />Welcome, {auth.currentUser?.email}!</h1>
-        <div className='items-start justify-center gap-6 rounded-lg p-8 md:grid lg:grid-cols-2 xl:grid-cols-3'>
+        <div className='items-start gap-6 md:grid lg:grid-cols-2 xl:grid-cols-3'>
           <div className="col-span-2 grid items-start gap-6 lg:col-span-1">
             <Information />
             <CreateProject />
             <CreateContact />
           </div>
-          <div className="col-span-2 grid items-start gap-6 pt-6 md:pt-0">
+          <div className="col-span-2 items-start gap-6 pt-6 space-y-6 md:pt-0">
             <ProjectsTable />
             <ContactTable />
           </div>

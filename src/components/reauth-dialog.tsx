@@ -36,7 +36,6 @@ export function ReauthComponent({
         }
     });
 
-    // Reauth Function
     const handleSubmit = async (values: any) => {
       const user = auth.currentUser;
       try {
