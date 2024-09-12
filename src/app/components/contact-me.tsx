@@ -13,12 +13,12 @@ export function ContactMe(){
     const [contacts, setContacts] = useState<any>([])
 
     const getContacts = async () => {
-      const col = collection(db, "contact"); // accessing contact collection
-      const snapshot = await getDocs(col); // making a snapshot of the data
+      const col = collection(db, "contact");
+      const snapshot = await getDocs(col);
       setContacts(snapshot.docs.map(doc => {
         return {
           id: doc.id,
-          ...doc.data() // saving the data
+          ...doc.data()
         }
       }));
     }

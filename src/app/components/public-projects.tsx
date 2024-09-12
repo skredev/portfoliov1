@@ -10,16 +10,17 @@ import Link from "next/link";
 import { ArrowDownRightFromCircle, DoorOpen } from "lucide-react";
 
 export function PublicProjects(){
+
     const [projects, setProjects] = useState<any>([])
 
     const getProjects = async () => {
-        const col = collection(db, "public_projects"); // accessing public projects collection
-        const snapshot = await getDocs(col); // making a snapshot of the data
+        const col = collection(db, "public_projects");
+        const snapshot = await getDocs(col);
         setProjects(snapshot.docs.map(doc => {
-          return {
+        return {
             id: doc.id,
-            ...doc.data() // saving the data
-          }
+            ...doc.data()
+        }
         }));
     }
 
