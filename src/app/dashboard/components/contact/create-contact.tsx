@@ -6,7 +6,7 @@ import * as z from 'zod';
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { collection, doc, setDoc } from "firebase/firestore";
-import { firestore as db } from "@/lib/firebase";
+import { firestore as db } from "@/lib/firebase/firebase";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";

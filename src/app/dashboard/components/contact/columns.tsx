@@ -5,7 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel 
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
-import { firestore as db } from "@/lib/firebase";
+import { firestore as db } from "@/lib/firebase/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { toast } from "sonner"
 

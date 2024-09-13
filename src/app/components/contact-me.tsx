@@ -1,7 +1,7 @@
 "use client"
 
 import { collection, getDocs } from "firebase/firestore";
-import { firestore as db } from "@/lib/firebase";
+import { firestore as db } from "@/lib/firebase/firebase";
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

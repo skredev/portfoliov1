@@ -1,7 +1,7 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { auth } from "@/lib/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SidebarNav } from "./components/sidebar-nav";

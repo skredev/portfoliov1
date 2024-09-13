@@ -6,7 +6,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { auth } from "@/lib/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { updateEmail } from "firebase/auth";
 import { toast } from "sonner"
 import { ReauthComponent } from "@/components/reauth-dialog"

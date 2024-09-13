@@ -4,7 +4,7 @@ import { DataTable } from "./data-table"
 import { columns } from "./columns"
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { firestore as db } from "@/lib/firebase";
+import { firestore as db } from "@/lib/firebase/firebase";
 
 export function ProjectsTable(){
 

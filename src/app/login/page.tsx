@@ -7,7 +7,7 @@ import * as z from 'zod';
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 

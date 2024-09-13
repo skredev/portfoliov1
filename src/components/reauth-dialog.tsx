@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage, } from "@/components/ui/form"
 import { Button } from "./ui/button"
-import { auth } from "@/lib/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { Input } from "./ui/input"
 import { reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth"
 import { toast } from "sonner"

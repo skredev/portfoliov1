@@ -1,6 +1,6 @@
 "use client"
 
-import { auth } from "@/lib/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { Hand } from "lucide-react";
 import { ProjectsTable } from "./components/projects/projects-table";
 import { CreateProject } from "./components/projects/create-project";

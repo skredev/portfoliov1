@@ -1,7 +1,7 @@
 "use client"
 
 import { collection, getDocs } from "firebase/firestore";
-import { firestore as db } from "@/lib/firebase";
+import { firestore as db } from "@/lib/firebase/firebase";
 import { useEffect, useState } from "react";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,8 +32,8 @@ export function PublicProjects(){
     <div className='py-12 px-48 max-[1280px]:px-24 max-[768px]:px-12'>
         <h1 className='text-3xl font-medium py-12 text-zinc-50'><DoorOpen />Public Projects</h1>
         <div className='grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3'>
-        {
-            projects.map((project : any) => (
+        
+        {projects.map((project: any) => (
             <div key={project.id}>
                 <Card>
                 <div className="flex justify-end">

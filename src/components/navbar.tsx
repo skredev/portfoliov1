@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth } from "@/lib/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
