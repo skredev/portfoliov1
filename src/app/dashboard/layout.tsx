@@ -24,7 +24,7 @@ export default function DashboardLayout({
     };
 
     checkAuth();
-  }, []);
+  }, [router]);
 
   if (isUserValid) {
     return children;

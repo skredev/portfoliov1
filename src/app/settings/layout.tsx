@@ -33,7 +33,7 @@ export default function SettingsLayout({
     };
 
     checkAuth();
-  }, []);
+  }, [router]);
 
   if (isUserValid) {
     return (

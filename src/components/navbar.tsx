@@ -19,6 +19,7 @@ import {
 } from "./ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Image from "next/image";
 
 export function Navbar() {
   const [isUserValid, setIsUserValid] = useState(false);
@@ -42,7 +43,7 @@ export function Navbar() {
       <div className="relative px-4 sm:px-6 lg:px-8 flex h-20 items-center justify-between w-full">
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2.5">
-            <img className="w-10 h-10" src="/favicon.ico"></img>
+            <Image src="/favicon.ico" width={40} height={40} alt="Favicon" />
             <h2 className="text-xl font-bold">skre/dev</h2>
           </Link>
         </div>
