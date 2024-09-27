@@ -1,7 +1,7 @@
-const { version } = require('./package.json');
-    
+const { version } = require("./package.json");
+
 module.exports = {
   env: {
-    version
-  }
+    version,
+  },
 };

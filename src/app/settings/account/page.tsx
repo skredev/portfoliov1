@@ -1,7 +1,7 @@
-import { Separator } from "@/components/ui/separator"
-import { EmailForm } from "./components/email-form"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { PasswordForm } from "./components/password-form"
+import { Separator } from "@/components/ui/separator";
+import { EmailForm } from "./components/email-form";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PasswordForm } from "./components/password-form";
 
 export default function SettingsAccountPage() {
   return (
@@ -26,5 +26,5 @@ export default function SettingsAccountPage() {
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }

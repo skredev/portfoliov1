@@ -1,20 +1,25 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel } from "@/components/ui/dropdown-menu"
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
 import { firestore as db } from "@/lib/firebase/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
-import { toast } from "sonner"
+import { toast } from "sonner";
 
 export type Projects = {
-  name: string
-  description: string
-  link: string
-  status: "DONE" | "WIP" | "INACTIVE"
-}
+  name: string;
+  description: string;
+  link: string;
+  status: "DONE" | "WIP" | "INACTIVE";
+};
 
 export const columns: ColumnDef<Projects>[] = [
   {
@@ -36,22 +41,21 @@ export const columns: ColumnDef<Projects>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const projectsAction = row.original
+      const projectsAction = row.original;
       let id;
 
-      async function deleteItem(id: string){
-        const itemRef = doc(db, "public_projects", id)
-        try{
+      async function deleteItem(id: string) {
+        const itemRef = doc(db, "public_projects", id);
+        try {
           await deleteDoc(itemRef).then(() => {
-            toast.success("Successfully deleted project")
-            window.location.reload()
-          })
-
-        }catch(error){
+            toast.success("Successfully deleted project");
+            window.location.reload();
+          });
+        } catch (error) {
           toast.error("Deletion failed", {
-            description: "Surely only a coincidence..."
-          })
-          console.log(error)
+            description: "Surely only a coincidence...",
+          });
+          console.log(error);
         }
       }
 
@@ -65,10 +69,12 @@ export const columns: ColumnDef<Projects>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => deleteItem(projectsAction.name)}>Delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => deleteItem(projectsAction.name)}>
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
   },
-]
+];

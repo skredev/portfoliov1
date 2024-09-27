@@ -3,11 +3,11 @@
 import { PublicProjects } from "./components/public-projects";
 import { ContactMe } from "./components/contact-me";
 
-export default function Home() {
+export default async function Home() {
   return (
-  <main>
-    <PublicProjects />
-    <ContactMe />
-  </main>
+    <main>
+      <PublicProjects />
+      <ContactMe />
+    </main>
   );
 }

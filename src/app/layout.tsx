@@ -1,25 +1,25 @@
-import type { Metadata, Viewport} from "next";
-import { Inter as FontSans } from "next/font/google"
-import { cn } from "@/lib/utils"
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/sonner"
+import type { Metadata, Viewport } from "next";
+import { Inter as FontSans } from "next/font/google";
+import { cn } from "@/lib/utils";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/navbar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
-})
+});
 
 export const metadata: Metadata = {
-  title: 'skre/dev'
+  title: "skre/dev",
 };
 
 export const viewport: Viewport = {
   initialScale: 1,
-  width: 'device-width',
-  maximumScale: 1
-}
+  width: "device-width",
+  maximumScale: 1,
+};
 
 export default function RootLayout({
   children,
@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <ThemeProvider
@@ -41,9 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
         </ThemeProvider>
         <Toaster />
       </body>

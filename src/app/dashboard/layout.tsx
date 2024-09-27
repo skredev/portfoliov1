@@ -9,10 +9,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   const router = useRouter();
   const [isUserValid, setIsUserValid] = useState(false);
-
 
   useEffect(() => {
     const checkAuth = () => {
@@ -29,8 +27,6 @@ export default function DashboardLayout({
   }, []);
 
   if (isUserValid) {
-    return (
-        children
-    );
+    return children;
   }
 }
